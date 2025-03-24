@@ -13,16 +13,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        ref: ${{ github.event.pull_request.head.ref }}
-        fetch-depth: ${{ env.PR_FETCH_DEPTH }}
+        ref: ${{ github.ref_name }}
+        fetch-depth: 1
 
     - name: Set up JDK
       uses: actions/setup-java@v1
       with:
-        java-version: '17' 
+        java-version: '17'
+
+    - name: Verify Java Files
+      run: |
+        cd Refactoring-Lab-master
+        ls -l
 
     - name: Compile Java
       run: |
-        cd Refactoring-Lab-master 
+        cd Refactoring-Lab-master
         javac -d . *.java
-      # Compile java file from directory
