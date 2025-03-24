@@ -1,7 +1,7 @@
 name: Sonarcloud
 
 on:
-  push:
+  pull_request:
     branches:
       - second
 
@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        ref: ${{ github.ref_name }}
+        ref: ${{ github.event.pull_request.head.ref }}
         fetch-depth: 1
 
     - name: Set up JDK
@@ -24,9 +24,10 @@ jobs:
     - name: Verify Java Files
       run: |
         cd Refactoring-Lab-master
-        ls -l
+        find . -name "*.java"
 
-    - name: Compile Java
+    - name: Compile Java Files from Subdirectories
       run: |
         cd Refactoring-Lab-master
-        javac -d . *.java
+        find . -name "*.java" > sources.txt
+        javac -d out @sources.txt
