@@ -23,6 +23,6 @@ jobs:
 
     - name: Compile Java
       run: |
-        cd second/Refactoring-Lab-master 
+        cd Refactoring-Lab-master 
         javac -d . *.java
       # Compile java file from directory
