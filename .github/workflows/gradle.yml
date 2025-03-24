@@ -24,10 +24,10 @@ jobs:
     - name: Verify Java Files
       run: |
         cd Refactoring-Lab-master
-        find . -name "*.java"
+        find . -name "**.java"
 
     - name: Compile Java Files from Subdirectories
       run: |
         cd Refactoring-Lab-master
-        find . -name "*.java" > sources.txt
+        find . -name "**.java" > sources.txt
         javac -d out @sources.txt
