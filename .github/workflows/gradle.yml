@@ -23,6 +23,6 @@ jobs:
 
     - name: Compile Java
       run: |
-        cd HolidayTravelVehicles 
+        cd Refactoring-Lab-master 
         javac -d . *.java
       # Compile java file from directory
